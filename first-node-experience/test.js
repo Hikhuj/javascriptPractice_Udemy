@@ -6,10 +6,22 @@ let http = require("http")
 // creando una funcion anonima con dos parametros que dan mejor sentido como request = req
 // y response = res
 let rogerApp = http.createServer(function(req, res) {
-    console.log(req.url)
-    res.end("Hola, bienvenidos a mi servidor webservice.")
+
+    // Podemos elegir que si ingresa a determinada URL, retorne algun mensaje o sitio web
+    if (req.url == "/") {
+        res.end("Bienvenidos al registro de compras")
+    }
+
+    // En este caso estamos devolviendo el about del sitio web
+    if (req.url == "/about") {
+        res.end("Acerca del programador")
+    }
+
+    // Y en este caso nosotros le estamos retornando al usuario que el sitio web que busca no existe
+    res.end("Sitio incorrecto")
+        // res.end("No podemos encontrar el sitio que usted busca")
 })
 
 // Metodo que le permite al servidor escuchar lo que reciba de un request hecho a este
 // Se le debe pasar un argumento que le permita a uno donde debe escuchar, en que puerto
-rogerApp.listen(3000)
+rogerApp.listen(4000)
